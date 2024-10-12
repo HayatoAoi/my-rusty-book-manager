@@ -44,5 +44,5 @@ jobs:
         run: cargo make clippy-ci -- -Dwarnings
 
       # 8
-      - nake: Rustfmt
+      - name: Rustfmt
         run: cargo make fmt -- --check
