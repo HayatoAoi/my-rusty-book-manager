@@ -1,8 +1,0 @@
-name: CI for book
-on:
-  push:
-    branches: [main]
-  pull_request:
-    paths-ignore:
-      - "README.md"
-      - "frontend/**"
