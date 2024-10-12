@@ -18,7 +18,7 @@ jobs:
 
       # 2
       - name: Cache dependencies
-        uses: Swatitem/rust-cache@v2
+        uses: Swatinem/rust-cache@v2
 
       # 3
       - name: Install Rust toolchanin
