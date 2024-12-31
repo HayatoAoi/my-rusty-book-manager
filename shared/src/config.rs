@@ -15,19 +15,19 @@ impl AppConfig {
             database: std::env::var("DATABASE_NAME")?,
         };
 
-	let redis = RedisConfig {
+        let redis = RedisConfig {
             host: std::env::var("REDIS_HOST")?,
             port: std::env::var("REDIS_PORT")?.parse::<u16>()?,
         };
         let auth = AuthConfig {
             ttl: std::env::var("AUTH_TOKEN_TTL")?.parse::<u64>()?,
         };
-	
+
         Ok(Self {
-	    database,
-	    redis,
-	    auth,
-	})
+            database,
+            redis,
+            auth,
+        })
     }
 }
 

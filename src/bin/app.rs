@@ -3,10 +3,7 @@ use std::{
     sync::Arc,
 };
 
-use adapter::{
-    database::connect_database_with,
-    redis::RedisClient,
-};
+use adapter::{database::connect_database_with, redis::RedisClient};
 use anyhow::Result;
 use api::route::{auth, book::build_book_routers, health::build_health_check_routers};
 use axum::Router;
@@ -61,7 +58,7 @@ async fn bootstrap() -> Result<()> {
     let app = Router::new()
         .merge(build_health_check_routers())
         .merge(build_book_routers())
-	.merge(auth::routes())
+        .merge(auth::routes())
         .layer(
             TraceLayer::new_for_http()
                 .make_span_with(DefaultMakeSpan::new().level(Level::INFO))

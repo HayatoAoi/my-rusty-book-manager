@@ -1,6 +1,4 @@
-use crate::{
-    model::auth::{AccessTokenResponse, LoginRequest},
-};
+use crate::model::auth::{AccessTokenResponse, LoginRequest};
 use axum::{extract::State, http::StatusCode, Json};
 use kernel::model::auth::event::CreateToken;
 use registry::AppRegistry;
