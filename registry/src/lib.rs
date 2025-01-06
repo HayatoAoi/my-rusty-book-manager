@@ -58,7 +58,6 @@ pub trait AppRegistryExt {
     fn user_repository(&self) -> Arc<dyn UserRepository>;
 }
 
-
 impl AppRegistryExt for AppRegistryImpl {
     fn health_check_repository(&self) -> Arc<dyn HealthCheckRepository> {
         self.health_check_repository.clone()
