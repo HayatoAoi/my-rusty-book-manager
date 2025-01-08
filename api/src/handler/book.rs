@@ -15,6 +15,12 @@ use kernel::model::{book::event::DeleteBook, id::BookId};
 use registry::AppRegistry;
 use shared::error::{AppError, AppResult};
 
+#[tracing::instrument(
+    skip(user, registry),
+    fields(
+        user_id = %user.user.id.to_string()
+    )
+)]
 pub async fn register_book(
     user: AuthorizedUser,
     State(registry): State<AppRegistry>,
@@ -29,6 +35,12 @@ pub async fn register_book(
         .map(|_| StatusCode::CREATED)
 }
 
+#[tracing::instrument(
+    skip(_user, registry),
+    fields(
+        user_id = %_user.user.id.to_string()
+    )
+)]
 pub async fn show_book_list(
     _user: AuthorizedUser,
     Query(query): Query<BookListQuery>,
@@ -44,11 +56,18 @@ pub async fn show_book_list(
         .map(Json)
 }
 
+#[tracing::instrument(
+    skip(_user, registry),
+    fields(
+        user_id = %_user.user.id.to_string()
+    )
+)]
 pub async fn show_book(
     _user: AuthorizedUser,
     Path(book_id): Path<BookId>,
     State(registry): State<AppRegistry>,
 ) -> AppResult<Json<BookResponse>> {
+    tracing::info!("ここにログを追加した");
     registry
         .book_repository()
         .find_by_id(book_id)
@@ -59,6 +78,12 @@ pub async fn show_book(
         })
 }
 
+#[tracing::instrument(
+    skip(user, registry),
+    fields(
+        user_id = %user.user.id.to_string()
+    )
+)]
 pub async fn update_book(
     user: AuthorizedUser,
     Path(book_id): Path<BookId>,
@@ -75,6 +100,12 @@ pub async fn update_book(
         .map(|_| StatusCode::OK)
 }
 
+#[tracing::instrument(
+    skip(user, registry),
+    fields(
+        user_id = %user.user.id.to_string()
+    )
+)]
 pub async fn delete_book(
     user: AuthorizedUser,
     Path(book_id): Path<BookId>,
