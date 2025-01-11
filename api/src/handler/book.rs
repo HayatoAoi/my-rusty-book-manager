@@ -15,7 +15,6 @@ use kernel::model::{book::event::DeleteBook, id::BookId};
 use registry::AppRegistry;
 use shared::error::{AppError, AppResult};
 
-
 #[cfg_attr(
     debug_assertions,
     utoipa::path(post, path="/api/v1/books",

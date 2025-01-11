@@ -14,7 +14,6 @@ use strum::VariantNames;
 use utoipa::ToSchema;
 
 #[derive(Serialize, Deserialize, VariantNames)]
-
 #[strum(serialize_all = "kebab-case")]
 pub enum RoleName {
     Admin,
