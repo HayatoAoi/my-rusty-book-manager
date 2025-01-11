@@ -1,0 +1,3 @@
+* my-rusty-book-manager
+
+  「RustによるWebアプリケーション開発 設計からリリース・運用まで」の自分用リポジトリ
